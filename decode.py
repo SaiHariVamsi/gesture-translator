@@ -39,7 +39,8 @@ distances = {309.89837043779363:'a',
              24.698178070456937:'l',
              287.544779121444:'m',
              248.71268564349506:'n',
-             168.86681142249356:'o',
+             #168.86681142249356:'o',
+             74.79304780526061:'o', #new model
              94.79451460923254:'p',
              135.14806694880988:'q',
              77.3886296557834:"r",
@@ -52,59 +53,39 @@ distances = {309.89837043779363:'a',
              43.289721643826724:'y',
              148.08105888330215:'z'}
 
-alpha = []
-
 def decode(iden):
-    if iden >= 290 and iden <= 330:
-        alpha.append('A')
-    if iden >= 220 and iden <= 260:
-        alpha.append('B')
-    if iden >= 178 and iden <= 218:
-        alpha.append('C')
-    if iden >= 70 and iden <= 110:
-        alpha.append('D')
-    if iden >= 265 and iden <= 305:
-        alpha.append('E')
-    if iden >= 162 and iden <= 202:
-        alpha.append('F')
-    if iden >= 101 and iden <= 141:
-        alpha.append('G')
-    if iden >= 41 and iden <= 81:
-        alpha.append('H')
-    if iden >= 77 and iden <= 117:
-        alpha.append('I')
-    if iden >= 122 and iden <= 162:
-        alpha.append('J')
-    if iden >= 19 and iden <= 59:
-        alpha.append('K')
-    if iden >= 4 and iden <= 44:
-        alpha.append('L')
-    if iden >= 267 and iden <= 307:
-        alpha.append('M')
-    if iden >= 228 and iden <= 268:
-        alpha.append('N')
-    if iden >= 148 and iden <= 188:
-        alpha.append('O')
-    if iden >= 74 and iden <= 114:
-        alpha.append('P')
-    if iden >= 115 and iden <= 155:
-        alpha.append('Q')
-    if iden >= 57 and iden <= 97:
-        alpha.append('R')
-    if iden >= 88 and iden <= 128:
-        alpha.append('S')
-    if iden >= 113 and iden <= 153:
-        alpha.append('T')
-    if iden >= 82 and iden <= 122:
-        alpha.append('U')
-    if iden >= 73 and iden <= 113:
-        alpha.append('V')
-    if iden >= 29 and iden <= 69:
-        alpha.append('W')
-    if iden >= 156 and iden <= 196:
-        alpha.append('X')
-    if iden >= 23 and iden <= 63:
-        alpha.append('Y')
-    if iden >= 128 and iden <= 168:
-        alpha.append('Z')
+    ranges = {
+        (290, 330): 'A',
+        (220, 260): 'B',
+        (178, 218): 'C',
+        (70, 110): 'D',
+        (265, 305): 'E',
+        (162, 202): 'F',
+        (101, 141): 'G',
+        (41, 81): 'H',
+        (77, 117): 'I',
+        (122, 162): 'J',
+        (19, 59): 'K',
+        (4, 44): 'L',
+        (267, 307): 'M',
+        (228, 268): 'N',
+        #(148, 188): 'O',
+        (54, 94):'O', #new model
+        (74, 114): 'P',
+        (115, 155): 'Q',
+        (57, 97): 'R',
+        (88, 128): 'S',
+        (113, 153): 'T',
+        (82, 122): 'U',
+        (73, 113): 'V',
+        (29, 69): 'W',
+        (156, 196): 'X',
+        (23, 63): 'Y',
+        (128, 168): 'Z'
+    }
+    alpha = []
+    for r, letter in ranges.items():
+        if r[0] <= iden <= r[1]:
+            alpha.append(letter)
+    
     return alpha
